@@ -1,0 +1,104 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Creating youtube script",
+    "description": "Send youtube script to spreadsheet",
+    "version": "v1.0.0"
+  },
+  "servers": [
+    {
+      "url": "https://hook.eu2.make.com"
+    }
+  ],
+  "paths": {
+    "/y8rj0fsklvz62k9rkhal6atgrv5142c1": {
+      "post": {
+        "description": "Create youtube script",
+        "operationId": "createscript",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "title": {
+                    "type": "string",
+                    "description": "video title"
+                  },
+                  "daihon": {
+                    "type": "string",
+                    "description": "daihon"
+                  }
+                },
+                "required": [
+                  "title",
+                  "daihon"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Daihon successfully sent",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request. One or more parameters are invalid."
+          },
+          "500": {
+            "description": "Internal server error."
+          }
+        },
+        "security": [
+          {
+            "apiKey": []
+          }
+        ]
+      },
+      "get": {
+        "description": "Retrieve spreadsheet URL from webhook",
+        "operationId": "getSpreadsheetUrl",
+        "responses": {
+          "200": {
+            "description": "Spreadsheet URL successfully retrieved",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "spreadsheetUrl": {
+                      "type": "string",
+                      "description": "URL of the spreadsheet"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request. Invalid parameters or request."
+          },
+          "404": {
+            "description": "Resource not found."
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {}
+  }
+}
